@@ -1,7 +1,8 @@
 class MoviesController < ApplicationController
 
   def bydirectors
-    
+    @movie = Movie.find(params[:id])
+    @movies = Movie.all
   end
 
   def show
