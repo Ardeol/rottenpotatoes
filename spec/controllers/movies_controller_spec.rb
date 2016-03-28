@@ -5,7 +5,12 @@ describe MoviesController do
         #@fake_movie = mock(:id => 1)
     end
     
+    it 'should go to the bydirectors route' do
+        
+    end
+    
     it 'should call movies_with_same_director' do
-        get :bydirectors
+        Movie.should_receive(:movies_with_same_director)
+        get :bydirectors, :id => 1
     end
 end

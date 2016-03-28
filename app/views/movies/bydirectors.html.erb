@@ -1,0 +1,23 @@
+<h1>Similar Movies</h1>
+<div><p>The following movies have the same director as <%= @movie.title %>, <%= @movie.director %>:</p></div>
+
+<table id="movies">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Rating</th>
+            <th>Release Date</th>
+            <th>More Info</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @movies.each do |movie| %>
+        <tr>
+            <td><%= movie.title %></td>
+            <td><%= movie.rating %></td>
+            <td><%= movie.release_date %></td>
+            <td><%= link_to "More about #{movie.title}" movie_path(movie) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
