@@ -1,5 +1,5 @@
 <h1>Similar Movies</h1>
-<div><p>The following movies have the same director as <%= @movie.title %>, <%= @movie.director %>:</p></div>
+<div><p>The following movies have the same director as <%= link_to "#{@movie.title}", movie_path(@movie) %>, <%= @movie.director %>:</p></div>
 
 <table id="movies">
     <thead>
@@ -21,3 +21,7 @@
       <% end %>
     </tbody>
 </table>
+
+<div>
+    <p><a href="/">Back to Home Page</a></p>
+</div>
