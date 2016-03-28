@@ -8,7 +8,7 @@ class Movie < ActiveRecord::Base
   
   def movies_with_same_director
     unless director.nil? or director.length == 0
-      Movie.where(:director => director)
+      Movie.where(:director => director).keep_if { |item| not item.title.eql?(self.title) }
     else
       nil
     end
