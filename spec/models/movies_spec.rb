@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Movie do
-    before(:all) do
+    before(:each) do
         @starwars = Movie.create!(:title => 'Star Wars', :rating => 'PG', :director => 'George Lucas', :release_date => '1977-05-25')
         @bladerunner = Movie.create!(:title => 'Blade Runner', :rating => 'PG', :director => 'Ridley Scott', :release_date => '1982-06-25')
         @alien = Movie.create!(:title => 'Alien', :rating => 'R', :release_date => '1979-05-25')
@@ -10,7 +10,7 @@ describe Movie do
 
     it 'should return movies with same director' do
         movies = @starwars.movies_with_same_director
-        expect(movies.length).to eq(2)
+        expect(movies.length).to eq(1)
         movies.each do |movie|
             expect(movie.director).to eq(@starwars.director)
         end

@@ -1,16 +1,17 @@
 require 'spec_helper'
 
 describe MoviesController do
-    before(:all) do
-        #@fake_movie = mock(:id => 1)
+    before :each do
+        @fake_movie = double('Movie', :id => 1, :title => "Fake Movie", :director => "Fake Director")
+        Movie.stub(:find).with("1").and_return(@fake_movie)
     end
     
-    it 'should go to the bydirectors route' do
-        
-    end
+#    it 'should go to the bydirectors route' do
+#        response.should render_template :bydirectors
+#    end
     
     it 'should call movies_with_same_director' do
-        Movie.should_receive(:movies_with_same_director)
+        @fake_movie.should_receive(:movies_with_same_director)
         get :bydirectors, :id => 1
     end
 end
