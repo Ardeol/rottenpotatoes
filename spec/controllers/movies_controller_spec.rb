@@ -6,9 +6,12 @@ describe MoviesController do
         Movie.stub(:find).with("1").and_return(@fake_movie)
     end
     
-#    it 'should go to the bydirectors route' do
-#        response.should render_template :bydirectors
-#    end
+  # Sad Path
+    it 'should go to home when no movies with same director' do
+        @fake_movie.stub(:movies_with_same_director).and_return(nil)
+        get :bydirectors, :id => 1
+        response.should redirect_to '/'
+    end
     
     it 'should call movies_with_same_director' do
         @fake_movie.should_receive(:movies_with_same_director)
